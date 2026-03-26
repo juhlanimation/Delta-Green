@@ -1,0 +1,810 @@
+/* ============================================
+   Delta Green Character Sheet Styles
+   ============================================ */
+
+/* --- Sheet Container --- */
+.sheet {
+  max-width: 1100px;
+  margin: 20px auto;
+  background: #fff;
+  color: #111;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.3;
+  border: 2px solid #333;
+}
+
+/* --- Header --- */
+.sheet-header {
+  background: #333;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.sheet-title {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 6px;
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  text-transform: uppercase;
+}
+
+/* --- Auto Save Toggle --- */
+.auto-save-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 12px;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.auto-save-label {
+  font-size: 11px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 18px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #666;
+  border-radius: 18px;
+  transition: 0.2s;
+}
+
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: #4a7;
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(14px);
+}
+
+/* --- Pages --- */
+.sheet-page {
+  border-bottom: 2px solid #333;
+}
+
+/* --- Sections --- */
+.section {
+  display: flex;
+  border-bottom: 1px solid #999;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.section-label-left {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  background: #444;
+  color: #fff;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 4px;
+  text-align: center;
+  min-width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-content {
+  flex: 1;
+  padding: 6px 10px;
+  min-width: 0;
+}
+
+/* --- Fields --- */
+.field-row {
+  display: flex;
+  gap: 0;
+}
+
+.field {
+  padding: 2px 6px;
+  border-right: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.field:last-child {
+  border-right: none;
+}
+
+.field-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #333;
+  margin-bottom: 2px;
+  letter-spacing: 0.3px;
+}
+
+.field input[type="text"],
+.field input[type="number"] {
+  border: none;
+  border-bottom: 1px solid #bbb;
+  outline: none;
+  font-size: 13px;
+  padding: 2px 4px;
+  background: transparent;
+  width: 100%;
+  font-family: inherit;
+}
+
+.field input:focus {
+  border-bottom-color: #555;
+  background: #f5f5ee;
+}
+
+/* --- Sex Field --- */
+.sex-field {
+  min-width: 120px;
+  max-width: 140px;
+}
+
+.sex-options {
+  display: flex;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* --- Stats Section --- */
+.stat-psych-row {
+  display: flex;
+}
+
+.stat-psych-row > .section {
+  border-bottom: none;
+}
+
+.stat-section {
+  flex: 1;
+  border-right: 1px solid #999;
+}
+
+.psych-section {
+  flex: 1;
+}
+
+.stat-header-row {
+  display: flex;
+  align-items: center;
+  padding: 3px 0;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 2px;
+}
+
+.stat-header-label {
+  flex: 1;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.stat-header-col {
+  width: 65px;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.stat-header-col.wide {
+  width: 180px;
+}
+
+.stat-row,
+.derived-row {
+  display: flex;
+  align-items: center;
+  padding: 2px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.stat-name {
+  flex: 1;
+  font-size: 12px;
+}
+
+.stat-input {
+  width: 55px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 2px 4px;
+  font-size: 13px;
+  margin: 0 5px;
+  font-family: inherit;
+  background: transparent;
+}
+
+.stat-input:focus {
+  border-color: #555;
+  outline: none;
+  background: #f5f5ee;
+}
+
+/* Remove number input spinners */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.stat-x5 {
+  width: 55px;
+  text-align: center;
+  font-size: 13px;
+  margin: 0 5px;
+  color: #666;
+}
+
+.stat-feature {
+  width: 170px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 12px;
+  padding: 2px 4px;
+  font-family: inherit;
+  background: transparent;
+}
+
+.stat-feature:focus {
+  border-bottom-color: #555;
+  outline: none;
+  background: #f5f5ee;
+}
+
+.stat-computed {
+  width: 120px;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+}
+
+/* --- Textareas --- */
+.description-textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-family: inherit;
+  resize: vertical;
+  background: transparent;
+}
+
+.description-textarea:focus {
+  border-color: #555;
+  outline: none;
+  background: #f5f5ee;
+}
+
+.description-textarea.tall {
+  min-height: 160px;
+}
+
+/* --- Bonds --- */
+.bonds-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 2px;
+}
+
+.bonds-score-header {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  width: 60px;
+  text-align: center;
+}
+
+.bond-row {
+  display: flex;
+  align-items: center;
+  padding: 1px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.bond-name {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid transparent;
+  font-size: 12px;
+  padding: 2px 4px;
+  font-family: inherit;
+  background: transparent;
+}
+
+.bond-name:focus {
+  border-bottom-color: #bbb;
+  outline: none;
+  background: #f5f5ee;
+}
+
+.bond-score {
+  width: 55px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 2px;
+  font-size: 13px;
+  font-family: inherit;
+  background: transparent;
+}
+
+.bond-score:focus {
+  border-color: #555;
+  outline: none;
+  background: #f5f5ee;
+}
+
+/* --- SAN Incidents --- */
+.san-incidents {
+  padding-top: 6px;
+}
+
+.san-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+}
+
+.san-label {
+  width: 90px;
+  font-size: 12px;
+}
+
+.san-check input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.adapted-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.adapted-label em {
+  font-style: italic;
+  color: #666;
+}
+
+/* --- Skills --- */
+.skills-section .section-content {
+  padding: 6px 10px 10px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 20px;
+}
+
+.skill-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  padding: 1px 0;
+  border-bottom: 1px solid #f0f0f0;
+  min-height: 24px;
+}
+
+.skill-check {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+}
+
+.skill-check input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  accent-color: #333;
+}
+
+.skill-name-label {
+  flex: 1;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skill-subtype {
+  width: 60px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 11px;
+  padding: 1px 3px;
+  margin: 0 2px;
+  font-family: inherit;
+  background: transparent;
+}
+
+.skill-subtype:focus {
+  border-bottom-color: #555;
+  outline: none;
+  background: #f5f5ee;
+}
+
+.skill-value {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 1px 2px;
+  font-size: 12px;
+  font-family: inherit;
+  background: transparent;
+}
+
+.skill-value:focus {
+  border-color: #555;
+  outline: none;
+  background: #f5f5ee;
+}
+
+.skill-pct {
+  font-size: 11px;
+  color: #666;
+  margin-left: 1px;
+}
+
+.other-skills-label {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 6px 0 2px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 2px;
+}
+
+.other-skill-name {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 11px;
+  padding: 1px 3px;
+  margin-right: 4px;
+  font-family: inherit;
+  background: transparent;
+}
+
+.other-skill-name:focus {
+  border-bottom-color: #555;
+  outline: none;
+  background: #f5f5ee;
+}
+
+.skills-note {
+  margin: 8px 0 0;
+  font-size: 10px;
+  font-style: italic;
+  color: #666;
+  text-align: center;
+}
+
+/* --- Injuries --- */
+.first-aid-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 12px;
+  border-top: 1px solid #ccc;
+  margin-top: 6px;
+}
+
+/* --- Equipment --- */
+.equipment-note {
+  margin: 6px 0 0;
+  font-size: 10px;
+  font-style: italic;
+  color: #666;
+}
+
+/* --- Weapons Table --- */
+.weapons-table {
+  width: 100%;
+}
+
+.weapons-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #333;
+  padding: 4px 0;
+}
+
+.weapon-col-header {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 2px;
+}
+
+.weapon-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 2px 0;
+}
+
+.weapon-row-label {
+  width: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.weapon-input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 12px;
+  padding: 2px 4px;
+  text-align: center;
+  font-family: inherit;
+  background: transparent;
+}
+
+.weapon-input:focus {
+  border-bottom-color: #555;
+  outline: none;
+  background: #f5f5ee;
+}
+
+/* --- Remarks --- */
+.remarks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.remarks-left {
+  padding-right: 10px;
+  border-right: 1px solid #ccc;
+}
+
+.remarks-right {
+  padding-left: 10px;
+}
+
+.remarks-recruitment {
+  font-size: 10px;
+  font-style: italic;
+  color: #666;
+  margin-top: 8px;
+}
+
+/* --- Special Training --- */
+.special-training {
+  margin-top: 10px;
+}
+
+.training-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 3px;
+  margin-bottom: 4px;
+}
+
+.training-col-header {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  width: 130px;
+  text-align: center;
+}
+
+.training-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 2px 0;
+}
+
+.training-desc {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 12px;
+  padding: 2px 4px;
+  font-family: inherit;
+  background: transparent;
+}
+
+.training-desc:focus {
+  border-bottom-color: #555;
+  outline: none;
+  background: #f5f5ee;
+}
+
+.training-skill {
+  width: 120px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 12px;
+  padding: 2px 4px;
+  text-align: center;
+  font-family: inherit;
+  background: transparent;
+}
+
+.training-skill:focus {
+  border-bottom-color: #555;
+  outline: none;
+  background: #f5f5ee;
+}
+
+/* --- Footer Section --- */
+.footer-section {
+  padding: 6px 10px;
+  border-top: 1px solid #999;
+  margin-left: 28px;
+}
+
+/* --- Form Stamp --- */
+.form-stamp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-top: 2px solid #333;
+  padding: 10px 20px;
+  font-size: 11px;
+}
+
+.stamp-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stamp-dd {
+  font-size: 28px;
+  font-weight: 900;
+  color: #333;
+}
+
+.stamp-form {
+  font-size: 9px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.3;
+  color: #555;
+}
+
+.stamp-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.stamp-center {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: #555;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.stamp-right {
+  font-size: 28px;
+  font-weight: 900;
+  color: #333;
+  letter-spacing: 2px;
+}
+
+/* --- Subsections --- */
+.subsection {
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+}
+
+.subsection:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* --- Print Styles --- */
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .sheet {
+    margin: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  .auto-save-toggle,
+  .file-mgmt-btn {
+    display: none !important;
+  }
+
+  .stat-input:focus,
+  .skill-value:focus,
+  .bond-score:focus,
+  .weapon-input:focus,
+  .description-textarea:focus,
+  .field input:focus,
+  .stat-feature:focus,
+  .skill-subtype:focus,
+  .other-skill-name:focus,
+  .bond-name:focus,
+  .training-desc:focus,
+  .training-skill:focus {
+    background: transparent;
+  }
+}
