@@ -32,6 +32,56 @@
   text-transform: uppercase;
 }
 
+/* --- Header Buttons --- */
+.file-mgmt-btn {
+  background: none;
+  border: 1px solid #666;
+  color: #ccc;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+.file-mgmt-btn:hover {
+  background: #555;
+  color: #fff;
+}
+
+.generator-btn {
+  background: none;
+  border: 1px solid #666;
+  color: #ccc;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 3px;
+  margin-left: 8px;
+}
+
+.generator-btn:hover {
+  background: #555;
+  color: #fff;
+}
+
+.print-btn {
+  background: none;
+  border: 1px solid #666;
+  color: #ccc;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 3px;
+  margin-left: 16px;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.print-btn:hover {
+  background: #555;
+  color: #fff;
+}
+
 /* --- Auto Save Toggle --- */
 .auto-save-toggle {
   display: flex;
@@ -776,23 +826,98 @@ input[type="number"] {
   margin-bottom: 0;
 }
 
-/* --- Print Styles --- */
+/* ============================================
+   Print Styles - 2-page A4 layout
+   ============================================ */
 @media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   body {
-    background: #fff;
+    background: #fff !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hide non-print elements */
+  .sheet-header {
+    padding: 6px 14px;
+  }
+
+  .auto-save-toggle,
+  .file-mgmt-btn,
+  .generator-btn,
+  .print-btn {
+    display: none !important;
   }
 
   .sheet {
     margin: 0;
-    border: none;
+    border: 1px solid #333;
     box-shadow: none;
+    max-width: 100%;
+    font-size: 11px;
   }
 
-  .auto-save-toggle,
-  .file-mgmt-btn {
-    display: none !important;
+  .sheet-title {
+    font-size: 32px;
   }
 
+  /* Page 1 */
+  .sheet-page.page-1 {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* Page 2 */
+  .sheet-page.page-2 {
+    page-break-before: always;
+    break-before: page;
+    page-break-after: avoid;
+  }
+
+  /* Tighten spacing */
+  .section-content {
+    padding: 4px 8px;
+  }
+
+  .section-label-left {
+    min-width: 22px;
+    font-size: 9px;
+    padding: 6px 3px;
+  }
+
+  .stat-input, .bond-score, .skill-value {
+    border: 1px solid #999;
+  }
+
+  .stat-feature {
+    border-bottom: 1px solid #999;
+  }
+
+  /* Ensure textareas print their content */
+  textarea {
+    overflow: visible !important;
+    resize: none !important;
+  }
+
+  .description-textarea {
+    border: 1px solid #999;
+    min-height: auto !important;
+  }
+
+  .description-textarea.tall {
+    min-height: 120px !important;
+  }
+
+  /* Remove focus styles */
   .stat-input:focus,
   .skill-value:focus,
   .bond-score:focus,
@@ -807,4 +932,49 @@ input[type="number"] {
   .training-skill:focus {
     background: transparent;
   }
+
+  /* Skills compactness */
+  .skill-row {
+    min-height: 20px;
+    padding: 0;
+  }
+
+  .skill-name-label {
+    font-size: 10px;
+  }
+
+  .skill-value {
+    width: 34px;
+    font-size: 10px;
+  }
+
+  .skill-pct {
+    font-size: 9px;
+  }
+
+  /* Form stamp */
+  .form-stamp {
+    font-size: 9px;
+    padding: 6px 14px;
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+
+  .stamp-dd { font-size: 22px; }
+  .stamp-number { font-size: 18px; }
+  .stamp-right { font-size: 22px; }
+
+  /* Keep certain sections together */
+  .section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Weapons table compactness */
+  .weapon-row { padding: 1px 0; }
+  .weapon-input { font-size: 10px; padding: 1px 2px; }
+  .weapon-col-header { font-size: 8px; }
+
+  /* Remarks compactness */
+  .remarks-grid { gap: 0; }
 }

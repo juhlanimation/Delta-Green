@@ -1,0 +1,652 @@
+/* ============================================
+   Delta Green Character Generator Styles
+   ============================================ */
+
+.generator {
+  max-width: 900px;
+  margin: 20px auto;
+  background: #fff;
+  color: #111;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  border: 2px solid #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Header --- */
+.gen-header {
+  background: #333;
+  padding: 16px 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.gen-header h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 6px;
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  text-transform: uppercase;
+}
+
+.gen-subtitle {
+  color: #aaa;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* --- Progress Bar --- */
+.gen-progress {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: #f5f5f0;
+  border-bottom: 2px solid #333;
+}
+
+.gen-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex: 1;
+}
+
+.gen-progress-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ddd;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.gen-progress-step.current .gen-progress-dot {
+  background: #333;
+  color: #fff;
+}
+
+.gen-progress-step.done .gen-progress-dot {
+  background: #4a7;
+  color: #fff;
+}
+
+.gen-progress-step.current {
+  color: #333;
+  font-weight: 700;
+}
+
+.gen-progress-step.done {
+  color: #4a7;
+}
+
+/* --- Body --- */
+.gen-body {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.gen-step h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  color: #333;
+}
+
+.gen-hint {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+/* --- Fields --- */
+.gen-field {
+  margin-bottom: 14px;
+}
+
+.gen-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.gen-field input[type="text"],
+.gen-field input[type="number"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fafaf8;
+}
+
+.gen-field input:focus {
+  outline: none;
+  border-color: #555;
+  background: #fff;
+}
+
+.gen-field-row {
+  display: flex;
+  gap: 16px;
+}
+
+.gen-field-row .gen-field {
+  flex: 1;
+}
+
+.gen-radio-row {
+  display: flex;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.gen-radio-row label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: none;
+  font-weight: 400;
+}
+
+/* --- Stat Generation --- */
+.gen-method-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.gen-method-btn {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #ddd;
+  background: #fafaf8;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+
+.gen-method-btn:hover {
+  border-color: #999;
+}
+
+.gen-method-btn.active {
+  border-color: #333;
+  background: #333;
+  color: #fff;
+}
+
+.gen-stat-method {
+  padding: 16px;
+  background: #f9f9f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.gen-stat-assign {
+  margin-top: 12px;
+}
+
+.gen-stat-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.gen-stat-label {
+  width: 180px;
+  font-size: 14px;
+}
+
+.gen-stat-row select {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.gen-stat-input {
+  width: 70px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 6px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.gen-stat-input:focus {
+  outline: none;
+  border-color: #555;
+}
+
+.gen-stat-x5 {
+  color: #888;
+  font-size: 13px;
+  width: 50px;
+}
+
+.gen-stat-assigned {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  min-width: 30px;
+  text-align: center;
+}
+
+.gen-ok { color: #4a7; }
+.gen-over { color: #c44; }
+
+.gen-btn {
+  padding: 10px 20px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.gen-btn:hover {
+  background: #555;
+}
+
+/* --- Array Buttons --- */
+.gen-array-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.gen-array-btn {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s;
+}
+
+.gen-array-btn:hover {
+  border-color: #999;
+}
+
+.gen-array-btn.active {
+  border-color: #333;
+  background: #f0f0ea;
+}
+
+.gen-array-btn strong {
+  font-size: 13px;
+}
+
+.gen-array-btn span {
+  font-size: 12px;
+  color: #666;
+}
+
+/* --- Professions --- */
+.gen-professions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gen-prof-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 2px solid #ddd;
+  background: #fafaf8;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+}
+
+.gen-prof-btn:hover {
+  border-color: #999;
+}
+
+.gen-prof-btn.active {
+  border-color: #333;
+  background: #f0f0ea;
+}
+
+.gen-prof-btn strong {
+  font-size: 15px;
+}
+
+.gen-prof-btn span {
+  font-size: 12px;
+  color: #666;
+}
+
+.gen-prof-skills {
+  font-size: 11px !important;
+  color: #888 !important;
+  line-height: 1.4;
+}
+
+/* --- Subsections --- */
+.gen-subsection {
+  margin-bottom: 20px;
+}
+
+.gen-subsection h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 6px;
+}
+
+/* --- Skill tags --- */
+.gen-skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.gen-skill-tag {
+  padding: 4px 10px;
+  background: #e8e8e2;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.gen-skill-tag.other {
+  background: #d8e8d8;
+}
+
+/* --- Choose Grid --- */
+.gen-choose-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gen-choose-btn {
+  padding: 8px 14px;
+  border: 2px solid #ddd;
+  background: #fafaf8;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+
+.gen-choose-btn:hover {
+  border-color: #999;
+}
+
+.gen-choose-btn.active {
+  border-color: #333;
+  background: #333;
+  color: #fff;
+}
+
+/* --- Bonus Skills Grid --- */
+.gen-bonus-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4px;
+}
+
+.gen-bonus-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  background: #fafaf8;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.1s;
+}
+
+.gen-bonus-btn:hover:not(:disabled) {
+  border-color: #999;
+}
+
+.gen-bonus-btn.active {
+  border-color: #4a7;
+  background: #e8f5e8;
+}
+
+.gen-bonus-btn.maxed {
+  opacity: 0.5;
+}
+
+.gen-bonus-btn:disabled {
+  cursor: default;
+}
+
+.gen-bonus-btn.other {
+  border-style: dashed;
+}
+
+/* --- Bonds --- */
+.gen-bond-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.gen-bond-input {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fafaf8;
+}
+
+.gen-bond-input:focus {
+  outline: none;
+  border-color: #555;
+  background: #fff;
+}
+
+.gen-bond-score {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  min-width: 30px;
+  text-align: center;
+}
+
+.gen-textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+  background: #fafaf8;
+}
+
+.gen-textarea:focus {
+  outline: none;
+  border-color: #555;
+  background: #fff;
+}
+
+/* --- Review --- */
+.gen-review {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gen-review-section {
+  padding: 14px;
+  background: #f9f9f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.gen-review-section h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  color: #333;
+}
+
+.gen-review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.gen-review-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.gen-review-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 14px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-width: 80px;
+}
+
+.gen-review-stat span:first-child {
+  font-size: 10px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.gen-review-stat strong {
+  font-size: 22px;
+}
+
+.gen-x5 {
+  font-size: 11px;
+  color: #888;
+}
+
+.gen-review-derived {
+  display: flex;
+  gap: 20px;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.gen-review-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.gen-skill-badge {
+  padding: 3px 8px;
+  background: #e8e8e2;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.gen-skill-badge.other {
+  background: #d8e8d8;
+}
+
+/* --- Navigation --- */
+.gen-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-top: 2px solid #333;
+  background: #f5f5f0;
+}
+
+.gen-nav-btn {
+  padding: 10px 28px;
+  border: 2px solid #333;
+  background: #fff;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+
+.gen-nav-btn:hover:not(:disabled) {
+  background: #f0f0ea;
+}
+
+.gen-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.gen-nav-btn.primary {
+  background: #333;
+  color: #fff;
+}
+
+.gen-nav-btn.primary:hover:not(:disabled) {
+  background: #555;
+}
+
+.gen-step-indicator {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- Print hide --- */
+@media print {
+  .generator {
+    display: none;
+  }
+}

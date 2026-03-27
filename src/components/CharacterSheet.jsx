@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import useCharacterState from '../hooks/useCharacterState'
 import SaveLoadModal from './SaveLoadModal'
 import PersonalData from './sections/PersonalData'
@@ -12,9 +12,22 @@ import Remarks from './sections/Remarks'
 import Footer from './sections/Footer'
 import './CharacterSheet.css'
 
-export default function CharacterSheet() {
+export default function CharacterSheet({ initialCharacter, onBackToGenerator }) {
   const state = useCharacterState()
   const [modalOpen, setModalOpen] = useState(false)
+  const initialLoaded = useRef(false)
+
+  // Load generated character on first mount
+  useEffect(() => {
+    if (initialCharacter && !initialLoaded.current) {
+      state.loadCharacter(initialCharacter)
+      initialLoaded.current = true
+    }
+  }, [initialCharacter]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  function handlePrint() {
+    window.print()
+  }
 
   return (
     <div className="sheet">
@@ -23,6 +36,11 @@ export default function CharacterSheet() {
         <button className="file-mgmt-btn" onClick={() => setModalOpen(true)}>
           &#9776;
         </button>
+        {onBackToGenerator && (
+          <button className="generator-btn" onClick={onBackToGenerator} title="Back to Generator">
+            &#9998;
+          </button>
+        )}
         <label className="auto-save-toggle">
           <span className="auto-save-label">Auto Save</span>
           <span className="toggle-switch">
@@ -35,6 +53,9 @@ export default function CharacterSheet() {
           </span>
         </label>
         <h1 className="sheet-title">DELTA GREEN</h1>
+        <button className="print-btn" onClick={handlePrint} title="Print Character Sheet">
+          &#128438; Print
+        </button>
       </div>
 
       <SaveLoadModal
@@ -46,7 +67,7 @@ export default function CharacterSheet() {
       />
 
       {/* Page 1 */}
-      <div className="sheet-page">
+      <div className="sheet-page page-1">
         <PersonalData {...state} />
 
         <div className="sheet-row stat-psych-row">
@@ -58,13 +79,9 @@ export default function CharacterSheet() {
       </div>
 
       {/* Page 2 */}
-      <div className="sheet-page">
+      <div className="sheet-page page-2">
         <Injuries {...state} />
         <Equipment {...state} />
-      </div>
-
-      {/* Page 3 */}
-      <div className="sheet-page">
         <Weapons {...state} />
         <Remarks {...state} />
         <Footer {...state} />
